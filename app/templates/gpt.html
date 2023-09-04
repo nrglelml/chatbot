@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT</title>
+</head>
+<body>
+    <h1>ChatGPT</h1>
+    <div>
+        <form action="/gpt" method="post">
+            <input type="text" name="user_input">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <!-- Chat mesajlarını döngü ile göster -->
+        {% for message in messages %}
+            {% if message.role == 'user' %}
+                <p>User: {{ message.content }}</p>
+            {% elif message.role == 'assistant' %}
+                <p>Assistant: {{ message.content }}</p>
+            {% else %}
+                <p>System: {{ message.content }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
